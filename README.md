@@ -14,9 +14,14 @@ npm install @pixi/marquee-selection
 ```
 
 ```typescript
+import { Application } from 'pixi.js';
 import { MarqueeSelection } from '@pixi/marquee-selection';
 
+const app = new Application();
+await app.init();
+
 const marquee = new MarqueeSelection();
+app.stage.addChild(marquee);
 ```
 
 ## Links
