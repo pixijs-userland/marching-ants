@@ -1,0 +1,52 @@
+{
+    "name": "@pixi/marquee-selection",
+    "version": "1.0.0",
+    "description": "Marching Ants UI extension for PixiJS",
+    "author": "Matt Karl <@bigtimebuddy>",
+    "main": "./lib/index.js",
+    "module": "./lib/index.mjs",
+    "types": "./lib/index.d.ts",
+    "exports": {
+      ".": {
+        "import": "./lib/index.mjs",
+        "require": "./lib/index.js",
+        "types": "./lib/index.d.ts"
+      }
+    },
+    "homepage": "https://pixijs.com/",
+    "bugs": "https://github.com/pixijs-userland/marquee-selection/issues",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/pixijs-userland/marquee-selection.git"
+    },
+    "scripts": {
+      "start": "xs serve",
+      "watch": "xs watch",
+      "build": "xs build",
+      "docs": "xs docs",
+      "lint": "xs lint",
+      "lint:fix": "xs lint --fix",
+      "types": "xs types",
+      "release": "xs release",
+      "test": "xs test"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "engines": {
+      "node": ">=18",
+      "npm": ">=9"
+    },
+    "files": [
+      "dist/",
+      "lib/",
+      "global.d.ts"
+    ],
+    "peerDependencies": {
+      "pixi.js": ">=8 <9"
+    },
+    "devDependencies": {
+      "@pixi/extension-scripts": "latest"
+    }
+  }
