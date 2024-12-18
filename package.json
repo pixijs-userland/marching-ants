@@ -43,6 +43,9 @@
       "lib/",
       "global.d.ts"
     ],
+    "extensionConfig": {
+      "deployFiles": "{{dist,examples,docs}/**,preview.gif}"
+    },
     "peerDependencies": {
       "pixi.js": ">=8 <9"
     },
