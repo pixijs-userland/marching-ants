@@ -1,6 +1,6 @@
 {
     "name": "@pixi/marquee-selection",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Marching Ants UI extension for PixiJS",
     "author": "Matt Karl <@bigtimebuddy>",
     "main": "./lib/index.js",
