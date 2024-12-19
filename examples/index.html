@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marquee Selection Example</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script type="importmap">
+        {
+            "imports": {
+                "pixi.js": "https://cdn.jsdelivr.net/npm/pixi.js@8/dist/pixi.mjs",
+                "@pixi/marquee-selection": "../dist/pixi-marquee-selection.mjs"
+            }
+        }
+    </script>
+    <script type="module">
+        import { Application, Text  } from 'pixi.js';
+        import { MarqueeSelection } from '@pixi/marquee-selection';
+
+        (async() => {
+
+            const app = new Application();
+            await app.init({
+                resizeTo: window,
+                backgroundColor: 'white',
+                hello: true,
+            });
+            document.body.appendChild(app.canvas);
+
+            const width = 200;
+            const height = 200;
+            const marquee = new MarqueeSelection({
+                dash: 4,
+                dashSpace: 4,
+                thickness: 1,
+                speed: 0.2,
+                width,
+                height,
+                color: 'black',
+                x: (app.screen.width - width) / 2 | 0,
+                y: (app.screen.height - height) / 2 | 0,
+            });
+
+            let dragging = false;
+
+            const directions = new Text({
+                text: 'Click and Drag',
+                y: 20,
+                x: app.screen.width / 2,
+                anchor: { x: 0.5, y: 0 },
+                roundPixels: true,
+                style: {
+                    fill: '#999',
+                    fontWeight: 'bold',
+                    size: '30px',
+                    align: 'center'
+                }
+            });
+
+            app.stage.addChild(marquee, directions);
+            app.stage.interactive = true;
+            app.stage.hitArea = app.screen;
+            app.stage.on('pointerdown', (event) => {
+                dragging = true;
+                marquee.position.copyFrom(event.data.global);
+                marquee.visible = true;
+                marquee.resize(2, 2);
+            });
+            app.stage.on('pointermove', (event) => {
+                if (dragging) {
+                    const width = event.data.global.x - marquee.x;
+                    const height = event.data.global.y - marquee.y;
+                    marquee.resize(width, height);
+                }
+            });
+            app.stage.on('pointerup', (event) => {
+                dragging = false;
+            });
+
+        })();
+    </script>
+</html>
