@@ -216,6 +216,8 @@ class MarqueeSelection extends Container
      */
     public destroy()
     {
+        if (this.destroyed) return;
+        this.autoUpdate = false;
         this._topLine.destroy();
         this._leftLine.destroy();
         this._rightLine.destroy();
